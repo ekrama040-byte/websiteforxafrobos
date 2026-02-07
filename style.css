@@ -1,3 +1,4 @@
+/* ===== Global ===== */
  /* ===== Global Styles ===== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
@@ -246,4 +247,20 @@ img {
     position: relative;
     z-index: 3; /* text and buttons above overlay */
 }
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+}
+
 
