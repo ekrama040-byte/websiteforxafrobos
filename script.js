@@ -3,9 +3,10 @@ const hero = document.querySelector(".hero");
 
 // Add your 4 images here
 const images = [
-    "images/imge1.jpg",
-    "images/image.jpg",
-    "images/elegoologo.jpg",
+    "images/pexels-tanhatamannasyed-35673084.png",
+    "images/pexels-tanhatamannasyed-35673070.jpg",
+    "images/pexels-tanhatamannasyed-35652406.jpg",
+    "images/bzjbsjhbajx nm.png",
     
 ];
 
@@ -18,7 +19,7 @@ hero.style.backgroundImage = `url(${images[0]})`;
 setInterval(() => {
     currentIndex = (currentIndex + 1) % images.length;
     hero.style.backgroundImage = `url(${images[currentIndex]})`;
-}, 5000);
+}, 3000);
 
 console.log("Website loaded successfully");
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

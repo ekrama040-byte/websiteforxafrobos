@@ -1,5 +1,5 @@
 /* ===== Global ===== */
- /* ===== Global Styles ===== */
+/* ===== Global ===== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 * {
@@ -7,6 +7,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+    color: #333;
+    line-height: 1.6;
+}
+
 /* ===== Navbar ===== */
 .navbar {
     position: sticky;
@@ -49,51 +57,44 @@
     color: #ff7f50;
 }
 
-/* ===== Wave Divider ===== */
-.wave {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-}
-
-.wave svg {
-    display: block;
-    width: 100%;
-    height: 120px;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* ===== Header / Hero ===== */
-header {
+/* ===== Hero Section ===== */
+.hero {
+    position: relative;
+    height: 90vh;
     background: url('https://images.unsplash.com/photo-1581093448792-73fe6d8c76c3?auto=format&fit=crop&w=1650&q=80') center/cover no-repeat;
-    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     color: white;
+    padding: 20px;
 }
 
-header h1 {
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
     font-size: 3rem;
-    font-weight: 700;
     margin-bottom: 15px;
-    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
-header p {
-    font-size: 1.4rem;
+.hero p {
+    font-size: 1.3rem;
     margin-bottom: 25px;
-    color:white;
 }
 
-header .btn {
+.btn {
     padding: 15px 30px;
     background: #ff7f50;
     color: white;
@@ -103,14 +104,26 @@ header .btn {
     transition: 0.3s ease;
 }
 
-header .btn:hover {
-    background:red;
+.btn:hover {
+    background: red;
     transform: scale(1.05);
+}
+
+/* ===== Wave Divider ===== */
+.wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.wave svg {
+    width: 100%;
+    height: 120px;
 }
 
 /* ===== Sections ===== */
 section {
-    padding: 60px 20px;
+    padding: 80px 20px;
     max-width: 1100px;
     margin: auto;
 }
@@ -119,43 +132,62 @@ section h2 {
     font-size: 2rem;
     color: #0a3d62;
     text-align: center;
-    margin-bottom: 25px;
-    font-weight: 700;
+    margin-bottom: 30px;
 }
 
-/* ===== About / Program ===== */
-#about p, #details p {
-    font-size: 1.1rem;
-    margin: 10px 0;
-}
-
-/* ===== Program List ===== */
+/* ===== Program Section ===== */
 #program {
-    background-color:rgba(235, 228, 228, 0.623);
+    background-color: rgba(235, 228, 228, 0.6);
 }
-#program ul {
+
+.cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    list-style: none;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-#program ul li {
-    background: #fff;
+.card {
+    position: relative;
+    height: 200px; /* height of the card */
     border-radius: 12px;
-    padding: 15px 20px;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.13);
-    font-weight: 500;
-    transition: 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* title at top */
 }
 
-#program ul li:hover {
-    transform: translateY(-4px);
-    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.18);
+.card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fills the whole card */
+    z-index: 1;
+    transition: transform 0.5s ease;
 }
 
-/* ===== School Section ===== */
+.card h3 {
+    position: relative;
+    z-index: 2; /* above image */
+    padding: 15px;
+    background: rgba(0,0,0,0.5); /* semi-transparent for readability */
+    font-size: 1.2rem;
+    margin: 0;
+    
+}
+.card:hover h3{opacity:0;}
+
+.card:hover img {
+    transform: scale(1.05); 
+    /* subtle zoom on hover */
+}
+
+
+/* ===== Schools Section ===== */
 #schools p {
     font-size: 1.1rem;
     text-align: center;
@@ -211,42 +243,13 @@ footer {
     margin-top: 40px;
 }
 
-/* ===== Responsive Image / Spacing Fix ===== */
+/* ===== Global Image Fix ===== */
 img {
     max-width: 100%;
+    height: auto;
     display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    display: block;
-    width: 100%;
-    height: 120px;
-}
-.contact{
-    display:flex;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-}
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.3); /* subtle dark overlay */
-    z-index: 1;  /* behind text but above background */
 }
 
-.hero > * {
-    position: relative;
-    z-index: 3; /* text and buttons above overlay */
-}
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
     .nav-links {
@@ -255,12 +258,10 @@ img {
     }
 
     .hero h1 {
-        font-size: 2em;
+        font-size: 2rem;
     }
 
     .hero p {
-        font-size: 1em;
+        font-size: 1rem;
     }
 }
-
-
